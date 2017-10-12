@@ -51,8 +51,8 @@ import java.util.regex.Pattern;
 public class KolakaHelper {
     private static final int DEBUG = 1;
     public static final String APP = "ima-exolorekolaka";
-    public static final String BASE_URL = "http://192.168.100.7/kolaka_server/index.php/api/";
-    public static final String BASE_URL_IMAGE = "http://admin.transfood-batam.com/images/";
+    public static final String BASE_URL = "http://192.168.100.9/ServerKolaka/index.php/api/";
+    public static final String BASE_URL_IMAGE = "http://192.168.100.9/ServerKolaka/img/";
 
 
     public static void alert(Context context, String title, String message) {
