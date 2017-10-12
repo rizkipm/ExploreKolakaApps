@@ -29,17 +29,17 @@ tools:showIn="@layout/app_bar_main_menu">
             android:background="#edc3c3" />
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="eTani"
-            android:id="@+id/textView2"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
             android:background="@android:color/holo_green_light"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Explore Kolaka"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff"
             android:textSize="13dp"
-            android:padding="5dp" />
+            android:textStyle="bold" />
 
         <GridView
             android:id="@+id/gridView"
