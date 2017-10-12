@@ -26,13 +26,13 @@ tools:showIn="@layout/app_bar_main_menu">
             android:layout_height="200dp"
             android:layout_alignParentTop="true"
             android:layout_margin="5dp"
-            android:background="#edc3c3" />
+            android:background="#f6f1f1" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_green_light"
+            android:background="#37b2f4"
             android:gravity="center"
             android:padding="5dp"
             android:text="Explore Kolaka"
@@ -45,15 +45,15 @@ tools:showIn="@layout/app_bar_main_menu">
             android:id="@+id/gridView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
             android:columnWidth="100dp"
             android:drawSelectorOnTop="true"
-            android:gravity="center"
-            android:numColumns="2"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="5dp"
             android:focusable="true"
-            android:clickable="true"
-            android:layout_margin="5dp" />
+            android:gravity="center"
+            android:numColumns="3"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="5dp" />
 
 
 

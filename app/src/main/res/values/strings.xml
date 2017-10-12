@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ExploreKolaka</string>
+    <string name="app_name">Explore Kolaka</string>
     <string name="title_activity_main_menu">Explore Kolaka</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
