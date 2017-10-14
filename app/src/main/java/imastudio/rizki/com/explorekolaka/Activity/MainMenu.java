@@ -49,12 +49,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import imastudio.rizki.com.explorekolaka.Helper.Constant;
-import imastudio.rizki.com.explorekolaka.Helper.GlobalHelper;
 import imastudio.rizki.com.explorekolaka.Helper.KolakaHelper;
 import imastudio.rizki.com.explorekolaka.Helper.No_Internet;
 import imastudio.rizki.com.explorekolaka.Helper.SessionManager;
 import imastudio.rizki.com.explorekolaka.LoginActivity;
-import imastudio.rizki.com.explorekolaka.MainActivity;
+import imastudio.rizki.com.explorekolaka.SplashActivity;
 import imastudio.rizki.com.explorekolaka.R;
 import imastudio.rizki.com.explorekolaka.adapter.MenuMainAdapter;
 import imastudio.rizki.com.explorekolaka.fragment.FragListInfo;
@@ -66,7 +65,7 @@ public class MainMenu extends AppCompatActivity
 
 
 
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = SplashActivity.class.getSimpleName();
     private static final int PERMISSION_WRITE_EXTERNAL_STORAGE = 100;
 
     private MenuMainAdapter mGridAdapter;

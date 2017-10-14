@@ -49,9 +49,9 @@ import imastudio.rizki.com.explorekolaka.adapter.MenuMainAdapter;
 import imastudio.rizki.com.explorekolaka.model.ItemInfoModel;
 import imastudio.rizki.com.explorekolaka.model.MenuItemModel;
 
-public class MainActivity extends BaseActivity {
+public class SplashActivity extends BaseActivity {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = SplashActivity.class.getSimpleName();
     private static final int PERMISSION_WRITE_EXTERNAL_STORAGE = 100;
 
     private MenuMainAdapter mGridAdapter;
@@ -241,7 +241,7 @@ public class MainActivity extends BaseActivity {
             if (result == 1) {
                 mGridAdapter.setGridData(mGridData);
             } else {
-                Toast.makeText(MainActivity.this, "Failed to fetch data!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SplashActivity.this, "Failed to fetch data!", Toast.LENGTH_SHORT).show();
             }
             //Hide progressbar
             mProgressBar.setVisibility(View.GONE);

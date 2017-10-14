@@ -72,8 +72,8 @@ public class FragListInfo extends Fragment {
             getActivity().finish();
 
         } else {
-            //ambil data booking
-            getDataRestoran();
+
+            getDataInfo();
 
         }
         return v;
@@ -81,13 +81,12 @@ public class FragListInfo extends Fragment {
 
 
 
-    private void getDataRestoran() {
+    private void getDataInfo() {
         data.clear();
         //ambil data dari server
-        String url = KolakaHelper.BASE_URL + "get_infoByID";
+        String url = KolakaHelper.BASE_URL + "get_menuByID";
         Map<String, String> parampa = new HashMap<>();
-        //parampa.put("t_device", NurHelper.getDeviceUUID(c));
-        //parampa.put("t_token", sesi.getToken());
+
         parampa.put("id_menu", idWilayah);
         //menambahkan progres dialog loading
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
@@ -200,7 +199,7 @@ public class FragListInfo extends Fragment {
                 holder = (ViewHolder) v.getTag();
             }
             //masukkan data booking
-            ItemInfoModel b = datas.get(position);
+            final ItemInfoModel b = datas.get(position);
             //holder.tvTanggal.setText(NurHelper.tglJamToInd(b.getBookingTgl()));
 //            holder.restoInfo.setOnClickListener(new View.OnClickListener() {
 //                @Override
@@ -215,11 +214,33 @@ public class FragListInfo extends Fragment {
 //                }
 //            });
             holder.restoNama.setText(b.getJudul_info());
-//            holder.restoAlamat.setText(b.get());
+            holder.restoNama.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), DetailInfo.class);
+//                //Pass the image title and url to DetailsActivity
+                intent.putExtra("id_info", b.getId_info());
+
+//                //Start details activity
+                startActivity(intent);
+                }
+            });
+
 
             Picasso.with(getContext()).load(KolakaHelper.BASE_URL_IMAGE+b.getGambar_info()).placeholder(R.drawable.no_image).
                     into(holder.restoImg);
-//            imageLoader.DisplayImage(NurHelper.BASE_URL_IMAGE + b.getLogoResto(), holder.restoImg);
+            holder.restoImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), DetailInfo.class);
+//                //Pass the image title and url to DetailsActivity
+                    intent.putExtra("id_info", b.getId_info());
+
+//                //Start details activity
+                    startActivity(intent);
+                }
+            });
+//
             return v;
         }
     }

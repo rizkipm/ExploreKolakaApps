@@ -38,7 +38,7 @@ public class DetailInfo extends AppCompatActivity {
     protected AQuery aQuery;
 
     String mIdMenu;
-    TextView txtJudul, txtDeks, txtLat, txtLong;
+    TextView txtJudul, txtDeks, txtLat, txtLong, txtNamaLokasi;
     ImageView imgInfo;
 
     @Override
@@ -50,15 +50,18 @@ public class DetailInfo extends AppCompatActivity {
         aQuery = new AQuery(c);
         c =this;
         Intent a = getIntent();
-        mIdMenu = a.getStringExtra("id_menu");
+        mIdMenu = a.getStringExtra("id_info");
 
-        Toast.makeText(getApplicationContext(), "id_menu" + mIdMenu, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "id_info" + mIdMenu, Toast.LENGTH_LONG).show();
 
         txtJudul = (TextView)findViewById(R.id.txt_judul);
         txtDeks = (TextView)findViewById(R.id.txtDeks);
         txtLat = (TextView)findViewById(R.id.txtLat);
         txtLong = (TextView)findViewById(R.id.txtLot);
         imgInfo = (ImageView)findViewById(R.id.imgInfo);
+        txtNamaLokasi = (TextView)findViewById(R.id.txt_namalokasi);
+
+        getDetailInfo();
 
 
     }
@@ -70,7 +73,7 @@ public class DetailInfo extends AppCompatActivity {
         Map<String, String> parampa = new HashMap<>();
         //parampa.put("t_device", NurHelper.getDeviceUUID(c));
         //parampa.put("t_token", sesi.getToken());
-        parampa.put("id_menu", mIdMenu);
+        parampa.put("id_info", mIdMenu);
         //menambahkan progres dialog loading
         ProgressDialog progressDialog = new ProgressDialog(c);
         progressDialog.setIndeterminate(true);
@@ -107,17 +110,20 @@ public class DetailInfo extends AppCompatActivity {
                                             b.setLat_wisata(object.getString(Constant.lat_wisata));
                                             b.setLot_wisata(object.getString(Constant.lot_wisata));
                                             b.setNama_daerah(object.getString(Constant.nama_daerah));
+                                            b.setGambar_info(object.getString(Constant.gambar_info));
 
                                             String nImage = b.getGambar_info();
 
 
                                             txtJudul.setText(b.getJudul_info());
                                             txtDeks.setText(b.getDesk_info());
+                                            txtNamaLokasi.setText("Lokasi : " + b.getNama_daerah());
+
 
                                             Glide.with(c).load(KolakaHelper.BASE_URL_IMAGE+nImage).into(imgInfo);
 
-                                            txtLat.setText(b.getLat_wisata());
-                                            txtLong.setText(b.getLot_wisata());
+                                            txtLat.setText("Latitude : "  + b.getLat_wisata());
+                                            txtLong.setText("Longitude : " +  b.getLot_wisata());
 
 
 
