@@ -48,7 +48,7 @@
         <activity
             android:name=".Activity.DetailInfo"
             android:label="Detail Info"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme" >
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
