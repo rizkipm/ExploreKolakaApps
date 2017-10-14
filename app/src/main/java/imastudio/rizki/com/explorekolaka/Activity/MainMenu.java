@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -130,42 +131,33 @@ public class MainMenu extends AppCompatActivity
 
 
 
-//        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-//                ItemInfo item = (ItemInfo) parent.getItemAtPosition(position);
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+//                MenuItem item = (MenuItem) parent.getItemAtPosition(position);
+
+                Bundle args = new Bundle();
+                args.putString(Constant.ID_MENU, mGridData.get(position).getId_menu());
+
+                Intent intent = new Intent(MainMenu.this, DetailInfo.class);
+
+                ImageView imageView = (ImageView) v.findViewById(R.id.grid_item_image);
 //
-//                Bundle args = new Bundle();
-//                args.putString(Constant.ID_PRODUK, mGridData.get(position).getId());
+
+                int[] screenLocation = new int[2];
+                imageView.getLocationOnScreen(screenLocation);
 //
-//                Intent intent = new Intent(MainActivityNew.this, DetailInfo.class);
-//
-//                ImageView imageView = (ImageView) v.findViewById(R.id.grid_item_image);
-////
-//
-//                int[] screenLocation = new int[2];
-//                imageView.getLocationOnScreen(screenLocation);
-////
-////                //Pass the image title and url to DetailsActivity
-//                intent.putExtra("left", screenLocation[0]).
-//                        putExtra("top", screenLocation[0]).
-//                        putExtra("width", imageView.getWidth()).
-//                        putExtra("height", imageView.getHeight()).
-//                        putExtra("id_produk", item.getId()).
-//                        putExtra("nama_produk", item.getTitle()).
-//                        putExtra("harga", item.getHarga()).
-//                        putExtra("harga_promo", item.getHarga_promo()).
-//                        putExtra("desk_produk", item.getDesProduk()).
-//                        putExtra("id_petani", item.getId_toko()).
-//                        putExtra("id_kategori", item.getId_kategori()).
-//                        putExtra("stok_produk", item.getStok()).
-//
-//                        putExtra("gbr_produk", item.getNamaGambar());
-//
-//
-////                //Start details activity
-//                startActivity(intent);
-//            }
-//        });
+//                //Pass the image title and url to DetailsActivity
+                intent.putExtra("left", screenLocation[0]).
+                        putExtra("top", screenLocation[0]).
+                        putExtra("width", imageView.getWidth()).
+                        putExtra("height", imageView.getHeight()).
+                        putExtra("id_menu", mGridData.get(position).getId_menu());
+
+
+//                //Start details activity
+                startActivity(intent);
+            }
+        });
 
         mProgressBar.setVisibility(View.VISIBLE);
 

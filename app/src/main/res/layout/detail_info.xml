@@ -24,7 +24,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
-                android:id="@+id/backposter"
+                android:id="@+id/imgInfo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
@@ -57,7 +57,7 @@
             android:padding="3dp">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/txt_judul"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
@@ -67,22 +67,28 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/txt_namalokasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nama Lokasi" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/txtDeks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Deskripsi Info" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/txtLat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Lat Long" />
+
+            <TextView
+                android:id="@+id/txtLot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

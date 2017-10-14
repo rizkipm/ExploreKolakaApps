@@ -7,14 +7,16 @@ public class Constant {
     public static final int VALUE_SLIDESHOW = 5;
     public static final String ID_MENU = "id_menu";
 
-    public static String ID_BOOKING = "id";
-    public static final String ALAMAT = "alamat";
+    public static String id_info = "id_info";
+    public static final String id_menu = "id_menu";
 
-    public static String JML_MENU = "jmlh_menu";
-    public static String NAMA_RESTO = "resto_nama";
-    public static final String DES_MENU = "menu_desk";
-    public static final String ID_WILAYAH = "id_wilayah";
-    public static String ID_RESTORAN = "id_resto";
+    public static String judul_info = "judul_info";
+    public static String desk_info = "desk_info";
+    public static final String gambar_info = "gambar_info";
+    public static final String lot_wisata = "lot_wisata";
+    public static final String lat_wisata = "lot_wisata";
+    public static String id_user = "id_user";
+    public static String nama_daerah = "nama_daerah";
 
     public static double TOTALDEAL = 0;
     public static double TOTALB = 0.0;
