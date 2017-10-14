@@ -4,7 +4,7 @@ package imastudio.rizki.com.explorekolaka.model;
  * Created by rizkisyaputra on 10/12/17.
  */
 
-public class ItemInfo {
+public class ItemInfoModel {
 
     private  String id_info, id_menu, judul_info, desk_info, gambar_info, nama_daerah, lat_wisata, lot_wisata, id_user;
 

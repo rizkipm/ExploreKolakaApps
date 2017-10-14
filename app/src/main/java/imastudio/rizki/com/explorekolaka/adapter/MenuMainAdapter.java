@@ -22,16 +22,15 @@ import java.util.ArrayList;
 
 import imastudio.rizki.com.explorekolaka.Activity.DetailInfo;
 import imastudio.rizki.com.explorekolaka.R;
-import imastudio.rizki.com.explorekolaka.model.ItemInfo;
-import imastudio.rizki.com.explorekolaka.model.MenuItem;
+import imastudio.rizki.com.explorekolaka.model.MenuItemModel;
 
 
-public class MenuMainAdapter extends ArrayAdapter<MenuItem> {
+public class MenuMainAdapter extends ArrayAdapter<MenuItemModel> {
     private Context mContext;
     private int layoutResourceId;
-    private ArrayList<MenuItem> mGridData = new ArrayList<MenuItem>();
+    private ArrayList<MenuItemModel> mGridData = new ArrayList<MenuItemModel>();
 
-    public MenuMainAdapter(Context mContext, int layoutResourceId, ArrayList<MenuItem> mGridData) {
+    public MenuMainAdapter(Context mContext, int layoutResourceId, ArrayList<MenuItemModel> mGridData) {
         super(mContext, layoutResourceId, mGridData);
         this.layoutResourceId = layoutResourceId;
         this.mContext = mContext;
@@ -43,7 +42,7 @@ public class MenuMainAdapter extends ArrayAdapter<MenuItem> {
      * Updates grid data and refresh grid items.
      * @param mGridData
      */
-    public void setGridData(ArrayList<MenuItem> mGridData) {
+    public void setGridData(ArrayList<MenuItemModel> mGridData) {
         this.mGridData = mGridData;
         notifyDataSetChanged();
     }
@@ -71,7 +70,7 @@ public class MenuMainAdapter extends ArrayAdapter<MenuItem> {
             holder = (ViewHolder) row.getTag();
         }
 
-        final MenuItem item = mGridData.get(position);
+        final MenuItemModel item = mGridData.get(position);
         holder.titleTextView.setText(Html.fromHtml(item.getNama_menu()));
 //        holder.titleharga.setText("Rp. " + Html.fromHtml(item.getJudul_info()) + " /kg");
 //        holder.hrgPromo.setText("Rp. " + Html.fromHtml(item.getHarga_promo()) + " /kg");

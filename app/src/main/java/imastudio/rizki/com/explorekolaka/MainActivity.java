@@ -7,15 +7,12 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
-import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -45,14 +42,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import imastudio.rizki.com.explorekolaka.Activity.MainMenu;
-import imastudio.rizki.com.explorekolaka.Activity.MenuUtama;
 import imastudio.rizki.com.explorekolaka.Helper.Constant;
 import imastudio.rizki.com.explorekolaka.Helper.KolakaHelper;
-import imastudio.rizki.com.explorekolaka.Helper.No_Internet;
 import imastudio.rizki.com.explorekolaka.Helper.SessionManager;
 import imastudio.rizki.com.explorekolaka.adapter.MenuMainAdapter;
-import imastudio.rizki.com.explorekolaka.model.ItemInfo;
-import imastudio.rizki.com.explorekolaka.model.MenuItem;
+import imastudio.rizki.com.explorekolaka.model.ItemInfoModel;
+import imastudio.rizki.com.explorekolaka.model.MenuItemModel;
 
 public class MainActivity extends BaseActivity {
 
@@ -64,7 +59,7 @@ public class MainActivity extends BaseActivity {
     protected AQuery aQuery;
     public static final AlphaAnimation btnAnimasi = new AlphaAnimation(1F, 0.5F);
     protected SessionManager sesi;
-    private ArrayList<MenuItem> mGridData;
+    private ArrayList<MenuItemModel> mGridData;
 
     private GridView mGridView;
     private ProgressBar mProgressBar;
@@ -73,7 +68,7 @@ public class MainActivity extends BaseActivity {
     AQuery aq;
     private boolean mIsAppFirstLaunched = true;
 
-    private ArrayList<ItemInfo> data;
+    private ArrayList<ItemInfoModel> data;
 
 
     ImageView btnBuah, btnSayur;
@@ -116,7 +111,7 @@ public class MainActivity extends BaseActivity {
 
 //        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-//                ItemInfo item = (ItemInfo) parent.getItemAtPosition(position);
+//                ItemInfoModel item = (ItemInfoModel) parent.getItemAtPosition(position);
 //
 //                Bundle args = new Bundle();
 //                args.putString(Constant.ID_PRODUK, mGridData.get(position).getId());
@@ -216,7 +211,7 @@ public class MainActivity extends BaseActivity {
             try {
                 JSONObject response = new JSONObject(result);
                 JSONArray posts = response.optJSONArray("data");
-                MenuItem item;
+                MenuItemModel item;
                 for (int i = 0; i < posts.length(); i++) {
                     JSONObject post = posts.optJSONObject(i);
                     String id = post.optString("id_menu");
@@ -226,7 +221,7 @@ public class MainActivity extends BaseActivity {
                     String gambar = post.optString("icon_menu");
 
 
-                    item = new MenuItem();
+                    item = new MenuItemModel();
                     item.setId_menu(id);
                     item.setNama_menu(title);
 

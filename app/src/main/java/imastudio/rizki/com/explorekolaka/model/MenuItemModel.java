@@ -4,7 +4,7 @@ package imastudio.rizki.com.explorekolaka.model;
  * Created by rizkisyaputra on 10/12/17.
  */
 
-public class MenuItem {
+public class MenuItemModel {
 
     private  String  id_menu, nama_menu,icon_menu;
 

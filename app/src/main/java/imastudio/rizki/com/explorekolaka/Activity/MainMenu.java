@@ -7,8 +7,6 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -51,6 +49,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import imastudio.rizki.com.explorekolaka.Helper.Constant;
+import imastudio.rizki.com.explorekolaka.Helper.GlobalHelper;
 import imastudio.rizki.com.explorekolaka.Helper.KolakaHelper;
 import imastudio.rizki.com.explorekolaka.Helper.No_Internet;
 import imastudio.rizki.com.explorekolaka.Helper.SessionManager;
@@ -58,7 +57,9 @@ import imastudio.rizki.com.explorekolaka.LoginActivity;
 import imastudio.rizki.com.explorekolaka.MainActivity;
 import imastudio.rizki.com.explorekolaka.R;
 import imastudio.rizki.com.explorekolaka.adapter.MenuMainAdapter;
-import imastudio.rizki.com.explorekolaka.model.ItemInfo;
+import imastudio.rizki.com.explorekolaka.fragment.FragListInfo;
+import imastudio.rizki.com.explorekolaka.model.ItemInfoModel;
+import imastudio.rizki.com.explorekolaka.model.MenuItemModel;
 
 public class MainMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -73,7 +74,7 @@ public class MainMenu extends AppCompatActivity
     protected AQuery aQuery;
     public static final AlphaAnimation btnAnimasi = new AlphaAnimation(1F, 0.5F);
     protected SessionManager sesi;
-    private ArrayList<imastudio.rizki.com.explorekolaka.model.MenuItem> mGridData;
+    private ArrayList<MenuItemModel> mGridData;
 
     private GridView mGridView;
     private ProgressBar mProgressBar;
@@ -82,7 +83,7 @@ public class MainMenu extends AppCompatActivity
     AQuery aq;
     private boolean mIsAppFirstLaunched = true;
 
-    private ArrayList<ItemInfo> data;
+    private ArrayList<ItemInfoModel> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,29 +134,37 @@ public class MainMenu extends AppCompatActivity
 
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-//                MenuItem item = (MenuItem) parent.getItemAtPosition(position);
+//                MenuItemModel item = (MenuItemModel) parent.getItemAtPosition(position);
+
 
                 Bundle args = new Bundle();
-                args.putString(Constant.ID_MENU, mGridData.get(position).getId_menu());
+                args.putString(Constant.id_menu, mGridData.get(position).getId_menu());
+                FragListInfo restoranFragment = new FragListInfo();
+                restoranFragment.setArguments(args);
+                getFragmentManager().beginTransaction().replace(R.id.frameDisplay, restoranFragment).commit();
+//                GlobalHelper.id_menu = data.get(position).getId_menu();
 
-                Intent intent = new Intent(MainMenu.this, DetailInfo.class);
+////                Bundle args = new Bundle();
+//                args.putString(Constant.ID_MENU, mGridData.get(position).getId_menu());
 
-                ImageView imageView = (ImageView) v.findViewById(R.id.grid_item_image);
+//                Intent intent = new Intent(MainMenu.this, DetailInfo.class);
 //
-
-                int[] screenLocation = new int[2];
-                imageView.getLocationOnScreen(screenLocation);
+//                ImageView imageView = (ImageView) v.findViewById(R.id.grid_item_image);
+////
 //
-//                //Pass the image title and url to DetailsActivity
-                intent.putExtra("left", screenLocation[0]).
-                        putExtra("top", screenLocation[0]).
-                        putExtra("width", imageView.getWidth()).
-                        putExtra("height", imageView.getHeight()).
-                        putExtra("id_menu", mGridData.get(position).getId_menu());
-
-
-//                //Start details activity
-                startActivity(intent);
+//                int[] screenLocation = new int[2];
+//                imageView.getLocationOnScreen(screenLocation);
+////
+////                //Pass the image title and url to DetailsActivity
+//                intent.putExtra("left", screenLocation[0]).
+//                        putExtra("top", screenLocation[0]).
+//                        putExtra("width", imageView.getWidth()).
+//                        putExtra("height", imageView.getHeight()).
+//                        putExtra("id_menu", mGridData.get(position).getId_menu());
+//
+//
+////                //Start details activity
+//                startActivity(intent);
             }
         });
 
@@ -216,7 +225,7 @@ public class MainMenu extends AppCompatActivity
             try {
                 JSONObject response = new JSONObject(result);
                 JSONArray posts = response.optJSONArray("data");
-                imastudio.rizki.com.explorekolaka.model.MenuItem item;
+                MenuItemModel item;
                 for (int i = 0; i < posts.length(); i++) {
                     JSONObject post = posts.optJSONObject(i);
                     String id = post.optString("id_menu");
@@ -226,7 +235,7 @@ public class MainMenu extends AppCompatActivity
                     String gambar = post.optString("icon_menu");
 
 
-                    item = new imastudio.rizki.com.explorekolaka.model.MenuItem();
+                    item = new MenuItemModel();
                     item.setId_menu(id);
                     item.setNama_menu(title);
 

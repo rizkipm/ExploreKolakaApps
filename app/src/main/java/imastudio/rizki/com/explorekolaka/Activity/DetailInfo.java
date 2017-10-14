@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
@@ -26,7 +25,7 @@ import imastudio.rizki.com.explorekolaka.Helper.Constant;
 import imastudio.rizki.com.explorekolaka.Helper.KolakaHelper;
 import imastudio.rizki.com.explorekolaka.Helper.SessionManager;
 import imastudio.rizki.com.explorekolaka.R;
-import imastudio.rizki.com.explorekolaka.model.ItemInfo;
+import imastudio.rizki.com.explorekolaka.model.ItemInfoModel;
 
 /**
  * Created by rizkisyaputra on 10/14/17.
@@ -101,7 +100,7 @@ public class DetailInfo extends AppCompatActivity {
                                         for (int a = 0; a < jsonArray.length(); a++) {
                                             JSONObject object = jsonArray.getJSONObject(a);
                                             //ambil data perbooking dan masukkan ke kelas object model
-                                            ItemInfo b = new ItemInfo();
+                                            ItemInfoModel b = new ItemInfoModel();
                                             b.setJudul_info(object.getString(Constant.judul_info));
                                             b.setDesk_info(object.getString(Constant.desk_info));
                                             b.setNama_daerah(object.getString(Constant.nama_daerah));
