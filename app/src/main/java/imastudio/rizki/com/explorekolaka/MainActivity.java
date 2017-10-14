@@ -121,7 +121,7 @@ public class MainActivity extends BaseActivity {
 //                Bundle args = new Bundle();
 //                args.putString(Constant.ID_PRODUK, mGridData.get(position).getId());
 //
-//                Intent intent = new Intent(MainActivityNew.this, DetailProduk.class);
+//                Intent intent = new Intent(MainActivityNew.this, DetailInfo.class);
 //
 //                ImageView imageView = (ImageView) v.findViewById(R.id.grid_item_image);
 ////

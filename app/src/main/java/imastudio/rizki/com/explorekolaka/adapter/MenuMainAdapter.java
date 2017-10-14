@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import imastudio.rizki.com.explorekolaka.Activity.DetailInfo;
 import imastudio.rizki.com.explorekolaka.R;
 import imastudio.rizki.com.explorekolaka.model.ItemInfo;
 import imastudio.rizki.com.explorekolaka.model.MenuItem;
@@ -78,28 +79,19 @@ public class MenuMainAdapter extends ArrayAdapter<MenuItem> {
 //        holder.diskon.setText(item.getId_user());
 //        holder.hrgPromo.setText("Stok : " + item.getLat_wisata());
 //        holder.wilayah.setText(item.getId_info());
-//        holder.btnBeliSkrg.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getContext(), DetailProduk.class);
-//
-////                //Pass the image title and url to DetailsActivity
-//                intent.putExtra("id_produk", item.getId()).
-//                        putExtra("nama_produk", item.getTitle()).
-//                        putExtra("harga", item.getHarga()).
-//                        putExtra("harga_promo", item.getHarga_promo()).
-//                        putExtra("desk_produk", item.getDesProduk()).
-//                        putExtra("id_petani", item.getId_toko()).
-//                        putExtra("id_kategori", item.getId_kategori()).
-//                        putExtra("stok_produk", item.getStok()).
-//
-//                        putExtra("gbr_produk", item.getNamaGambar());
-//
-//
-////                //Start details activity
-//                getContext().startActivity(intent);
-//            }
-//        });
+        holder.btnBeliSkrg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), DetailInfo.class);
+
+//                //Pass the image title and url to DetailsActivity
+                intent.putExtra("id_menu", item.getId_menu());
+
+
+//                //Start details activity
+                getContext().startActivity(intent);
+            }
+        });
 
         Picasso.with(getContext())
                 .load(item.getIcon_menu())
