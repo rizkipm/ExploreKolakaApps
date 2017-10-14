@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,7 +55,6 @@ public class DetailInfo extends AppCompatActivity {
         Intent a = getIntent();
         mIdMenu = a.getStringExtra("id_info");
 
-        Toast.makeText(getApplicationContext(), "id_info" + mIdMenu, Toast.LENGTH_LONG).show();
 
         txtJudul = (TextView)findViewById(R.id.txt_judul);
         txtDeks = (TextView)findViewById(R.id.txtDeks);
@@ -60,6 +62,8 @@ public class DetailInfo extends AppCompatActivity {
         txtLong = (TextView)findViewById(R.id.txtLot);
         imgInfo = (ImageView)findViewById(R.id.imgInfo);
         txtNamaLokasi = (TextView)findViewById(R.id.txt_namalokasi);
+
+
 
         getDetailInfo();
 
@@ -113,17 +117,40 @@ public class DetailInfo extends AppCompatActivity {
                                             b.setGambar_info(object.getString(Constant.gambar_info));
 
                                             String nImage = b.getGambar_info();
-
+                                            String nLokasi = b.getNama_daerah();
+                                            String nLat = b.getLat_wisata();
+                                            String nLong = b.getLot_wisata();
 
                                             txtJudul.setText(b.getJudul_info());
                                             txtDeks.setText(b.getDesk_info());
-                                            txtNamaLokasi.setText("Lokasi : " + b.getNama_daerah());
-
-
                                             Glide.with(c).load(KolakaHelper.BASE_URL_IMAGE+nImage).into(imgInfo);
 
-                                            txtLat.setText("Latitude : "  + b.getLat_wisata());
-                                            txtLong.setText("Longitude : " +  b.getLot_wisata());
+
+
+
+                                            if (nLokasi.equalsIgnoreCase("")){
+                                                txtNamaLokasi.setVisibility(View.GONE);
+                                            }else{
+                                                txtNamaLokasi.setText("Lokasi : " + b.getNama_daerah());
+                                            }
+
+                                            if (nLat.equalsIgnoreCase("")){
+                                                txtLat.setVisibility(View.GONE);
+                                            }else{
+                                                txtLat.setText("Latitude : "  + b.getLat_wisata());
+                                            }
+
+                                            if (nLong.equalsIgnoreCase("")){
+                                                txtLat.setVisibility(View.GONE);
+                                            }else{
+                                                txtLong.setText("Longitude : " +  b.getLot_wisata());
+                                            }
+
+
+
+
+
+
 
 
 
@@ -145,5 +172,40 @@ public class DetailInfo extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+
+
+
+            // Inflate the menu; this adds items to the action bar if it is present.
+            getMenuInflater().inflate(R.menu.menu_detail, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        if (mIdMenu.equalsIgnoreCase("4")){
+           item.setVisible(false);
+        }else
+        {
+            item.setVisible(true);
+        }
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -213,16 +213,25 @@ public class FragListInfo extends Fragment {
 //                    startActivity(a);
 //                }
 //            });
+
+            final String nlaiMenu = b.getId_menu();
             holder.restoNama.setText(b.getJudul_info());
             holder.restoNama.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), DetailInfo.class);
+
+                    if (nlaiMenu.equalsIgnoreCase("2")){
+
+                    }else{
+                        Intent intent = new Intent(getActivity(), DetailInfo.class);
 //                //Pass the image title and url to DetailsActivity
-                intent.putExtra("id_info", b.getId_info());
+                        intent.putExtra("id_info", b.getId_info());
 
 //                //Start details activity
-                startActivity(intent);
+                        startActivity(intent);
+                    }
+
+
                 }
             });
 
@@ -232,12 +241,17 @@ public class FragListInfo extends Fragment {
             holder.restoImg.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), DetailInfo.class);
+                    if (nlaiMenu.equalsIgnoreCase("2")){
+
+                    }else{
+                        Intent intent = new Intent(getActivity(), DetailInfo.class);
 //                //Pass the image title and url to DetailsActivity
-                    intent.putExtra("id_info", b.getId_info());
+                        intent.putExtra("id_info", b.getId_info());
 
 //                //Start details activity
-                    startActivity(intent);
+                        startActivity(intent);
+                    }
+
                 }
             });
 //
