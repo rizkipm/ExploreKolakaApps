@@ -53,6 +53,7 @@ import imastudio.rizki.com.explorekolaka.Helper.KolakaHelper;
 import imastudio.rizki.com.explorekolaka.Helper.No_Internet;
 import imastudio.rizki.com.explorekolaka.Helper.SessionManager;
 import imastudio.rizki.com.explorekolaka.LoginActivity;
+import imastudio.rizki.com.explorekolaka.Maps.MapsWisata;
 import imastudio.rizki.com.explorekolaka.SplashActivity;
 import imastudio.rizki.com.explorekolaka.R;
 import imastudio.rizki.com.explorekolaka.adapter.MenuMainAdapter;
@@ -135,12 +136,29 @@ public class MainMenu extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 //                MenuItemModel item = (MenuItemModel) parent.getItemAtPosition(position);
 
+                String nMenu = mGridData.get(position).getId_menu();
 
-                Bundle args = new Bundle();
-                args.putString(Constant.id_menu, mGridData.get(position).getId_menu());
-                FragListInfo restoranFragment = new FragListInfo();
-                restoranFragment.setArguments(args);
-                getFragmentManager().beginTransaction().replace(R.id.frameDisplay, restoranFragment).commit();
+                if (nMenu.equalsIgnoreCase("8")){
+                    Intent intent = new Intent(MainMenu.this, MapsWisata.class);
+//
+                intent.putExtra(
+
+                        "id_menu", mGridData.get(position).getId_menu());
+
+
+//                //Start details activity
+                startActivity(intent);
+
+                }else{
+
+                    Bundle args = new Bundle();
+                    args.putString(Constant.id_menu, mGridData.get(position).getId_menu());
+                    FragListInfo restoranFragment = new FragListInfo();
+                    restoranFragment.setArguments(args);
+                    getFragmentManager().beginTransaction().replace(R.id.frameDisplay, restoranFragment).commit();
+                }
+
+
 //                GlobalHelper.id_menu = data.get(position).getId_menu();
 
 ////                Bundle args = new Bundle();

@@ -14,7 +14,7 @@ public class Constant {
     public static String desk_info = "desk_info";
     public static final String gambar_info = "gambar_info";
     public static final String lot_wisata = "lot_wisata";
-    public static final String lat_wisata = "lot_wisata";
+    public static final String lat_wisata = "lat_wisata";
     public static String id_user = "id_user";
     public static String nama_daerah = "nama_daerah";
 
